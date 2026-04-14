@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flash Game</title>
+
+  <!-- Ruffle -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #game-container {
+      width: 95vw;
+      height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    ruffle-player, object, embed {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 1000px;
+      max-height: 750px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="game-container"></div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+
+      // attach player
+      document.getElementById("game-container").appendChild(player);
+
+      // load your SWF
+      player.load("sas2.swf");
+
+      // optional: smoother scaling behavior
+      player.style.width = "100%";
+      player.style.height = "100%";
+    });
+  </script>
+
+</body>
+</html>
